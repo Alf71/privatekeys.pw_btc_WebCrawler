@@ -21,13 +21,14 @@ file=open("pages_with_balance.txt","w")
 # print(randint(1,2573157538607026564968244111304175730063056983979442319613448069811514699875))
 def setup_driver():
     options=Options()
-
+    options = webdriver.ChromeOptions() 
+    options.add_experimental_option("excludeSwitches", ["enable-logging"])
     #change binary location to the location where chrome/brave/chromium is installed
     options.binary_location=r"C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe"
     #change the path of the chromedriver to where u have saved it on your computer
-    driver=webdriver.Chrome(executable_path=r"G:\selenium\chromedriver.exe",chrome_options=options)
+    driver=webdriver.Chrome(executable_path=r"G:\selenium\chromedriver.exe",options=options)
     return driver
-
+    
 def random_page(last_page=None):
     try:
         page_number=randint(1,2573157538607026564968244111304175730063056983979442319613448069811514699875)
